@@ -129,7 +129,7 @@ const sendMessage = async (body) => {
                 messagingServiceSid,
                 to
             });
-        console.log('successfully sent message from twilio');
+        console.log('successfully sent message from twilio', message.sid);
     } catch (e) {
         console.log('failed to send message from twilio', e);
     }
