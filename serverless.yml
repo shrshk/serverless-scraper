@@ -1,0 +1,21 @@
+service: ticket-alerter-service
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+functions:
+  ticketAlerter:
+    handler: handler.ticketAlerter
+    events:
+      - schedule: rate(2 hours)
+    timeout: 60
+    environment:
+      ACCOUNT_SID: ${file(variables/variables.yaml):ACCOUNT_SID}
+      AUTH_TOKEN: ${file(variables/variables.yaml):AUTH_TOKEN}
+      MESSAGE_SERVICE_SID: ${file(variables/variables.yaml):MESSAGE_SERVICE_SID}
+      PHONE_NUMBER: ${file(variables/variables.yaml):PHONE_NUMBER}
+      MONTH_I_CARE: ${file(variables/variables.yaml):MONTH_I_CARE}
+      DAYS_I_CARE: ${file(variables/variables.yaml):DAYS_I_CARE}
