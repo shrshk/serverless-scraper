@@ -1,2 +1,2 @@
 # serverless-scraper
-serverless scraper with selenium for aws lambda 
+serverless scraper with puppeteer for aws lambda 
