@@ -1,4 +1,4 @@
-service: ticket-alerter-service
+service: stock-alerter-service
 
 frameworkVersion: '3'
 
@@ -7,10 +7,11 @@ provider:
   runtime: nodejs14.x
 
 functions:
-  ticketAlerter:
-    handler: handler.ticketAlerter
+  stockAlerter:
+    handler: bestbuy.ticketAlerter
     events:
-      - schedule: rate(2 hours)
+      - schedule: rate(5 minutes)
+      - schedule: cron(0 17 * * ? *)
     timeout: 60
     environment:
       ACCOUNT_SID: ${file(variables/variables.yaml):ACCOUNT_SID}
